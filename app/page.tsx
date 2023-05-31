@@ -13,11 +13,16 @@ export default async function Home() {
     chunkOverlap: 24,
   });
   const output = await splitter.createDocuments([str]);
-	console.log(output);
 
   return (
     <main>
       <h1 className="text-center text-3xl">langchain</h1>
+      {output.map((obj, index) => (
+        <div key={index} className="p-2">
+          <p className="text-center text-2xl pb-2">Chank {index}</p>
+          <p>{obj.pageContent}</p>
+        </div>
+      ))}
     </main>
   );
 }
