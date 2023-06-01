@@ -1,5 +1,11 @@
 # Next LangChain Sample
 
+# 開発環境
+
+- Next js 13.4
+- TypeScript
+- Tailwind CSS
+
 ## 簡単な流れ
 
 1. PDFを読み込み
