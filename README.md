@@ -18,6 +18,12 @@
 - `.env.local.example`を`.env.local`に変更
 - `NEXT_PUBLIC_OPENAI_API_KEY`にOpenAI APIのAPIキーを指定
 
+## node_modulesをインストール
+
+```bash
+npm install
+```
+
 ## 簡易サーバー起動
 
 ```bash
