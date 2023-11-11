@@ -1,14 +1,19 @@
-import { PDFLoader } from "langchain/document_loaders/fs/pdf";
-import { CharacterTextSplitter } from "langchain/text_splitter";
-import { OpenAI } from "langchain/llms/openai";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { loadQAMapReduceChain } from "langchain/chains";
+import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { OpenAI } from "langchain/llms/openai";
+import { CharacterTextSplitter } from "langchain/text_splitter";
+import { MemoryVectorStore } from "langchain/vectorstores/memory";
 
 export default async function Home() {
-  const loader = new PDFLoader("data/pg.pdf", {
-    splitPages: false,
-  });
+	const loader = new PDFLoader(
+		"data/pg.pdf",
+		// "/Users/macbookhiro/Desktop/Project/NextProject/next-langchain-sample/data/pg.pdf",フルパスはOK
+		// "https://s1.q4cdn.com/695946674/files/doc_news/2023/10/FY2324-Q1-JAS-Release.pdf",ネットから取得はできない
+    {
+      splitPages: false,
+    }
+  );
   const res_pdf = await loader.load();
   const str = res_pdf[0].pageContent.replace(/\n/g, " ").replace(/,/g, "");
   const splitter = new CharacterTextSplitter({
